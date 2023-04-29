@@ -183,7 +183,7 @@ STEP 2
   border: 1px solid #003c85;
 }
 
-.active {
+.active__plan {
   border: 1px solid #003c85;
 }
 .plan__logo {
@@ -191,6 +191,7 @@ STEP 2
   height: 4rem;
 }
 .plan__radio {
+  /* opacity: 0; */
   display: none;
 }
 .choice__text-box {
@@ -225,6 +226,15 @@ STEP 2
 .check__box {
   display: flex;
   align-items: center;
+}
+
+.checked__text {
+  display: none;
+  font-size: 1.2rem;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  color: #d61b1b;
 }
 .select__plan {
 }
@@ -317,6 +327,83 @@ STEP 2
   margin-left: auto;
   font-size: 1.3rem;
   color: #473dff;
+}
+.selected__box-month,
+.selected__box-year {
+  display: block;
+}
+.selected__box-year {
+  display: none;
+}
+
+.selected__year,
+.selected__month {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f6ff;
+  border-radius: 1rem;
+}
+
+.chosen__box,
+.chosen__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  /* background-color: #f0f6ff; */
+  /* border: 1px solid #02295a; */
+}
+
+.chosen__box {
+  border-bottom: 1px solid #ddd;
+}
+.chosen__plan {
+  font-size: 1.6rem;
+  color: #02295a;
+}
+.chosen__price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #02295a;
+}
+
+.chosen__add-ons__box {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  /* background-color: #f0f6ff; */
+}
+.chosen__add-ons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  /* background-color: #f0f6ff; */
+}
+
+.chosen__add-ons__text {
+  font-size: 1.2rem;
+  color: #9699ab;
+}
+.chosen__add-ons__price {
+  font-size: 1.2rem;
+  color: #02295a;
+  font-weight: 500;
+}
+
+.chosen__total {
+}
+
+.chosen__total__text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #9699ab;
+}
+
+.chosen__total__price {
+  font-size: 1.7rem;
+  color: #473dff;
+  font-weight: 700;
 }
 
 /* .attribution {

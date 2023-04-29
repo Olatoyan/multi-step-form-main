@@ -22,7 +22,10 @@
   justify-content: space-between;
 }
 
-.back__btn {
+.back__btn,
+#back__btn-2,
+#back__btn-3,
+#back__btn-4 {
   font-size: 1.2rem;
   outline: 0;
   padding: 1rem;
@@ -33,11 +36,27 @@
   cursor: pointer;
 }
 
-.next__btn {
+.next__btn,
+#next__btn-2,
+#next__btn-3 {
   color: #fff;
   font-size: 1.2rem;
   outline: 0;
   background-color: #02295a;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-top: 7rem;
+  align-self: flex-end;
+
+  cursor: pointer;
+}
+
+#next__btn-4 {
+  color: #fff;
+  font-size: 1.2rem;
+  outline: 0;
+  background-color: #473dff;
   padding: 1rem;
   border: none;
   border-radius: 0.5rem;

@@ -157,9 +157,10 @@
                   type="radio"
                   name="plan"
                   id="plan1"
+                  value="Arcade"
                 />
-                <label for="plan1">
-                  <div class="plan">
+                <label class="label__plan" for="plan1">
+                  <div class="plan" data-plan="Arcade(Monthly)">
                     <img
                       src="assets/images/icon-arcade.svg"
                       alt="arcade logo"
@@ -179,9 +180,10 @@
                   type="radio"
                   name="plan"
                   id="plan2"
+                  value="Advanced"
                 />
-                <label for="plan2">
-                  <div class="plan">
+                <label class="label__plan" for="plan2">
+                  <div class="plan" data-plan="Advanced(Monthly)">
                     <img
                       src="assets/images/icon-advanced.svg"
                       alt="advanced logo"
@@ -200,9 +202,10 @@
                   type="radio"
                   name="plan"
                   id="plan3"
+                  value="Pro"
                 />
-                <label for="plan3">
-                  <div class="plan">
+                <label class="label__plan" for="plan3">
+                  <div class="plan" data-plan="Pro(Monthly)">
                     <img
                       src="assets/images/icon-pro.svg"
                       alt="pro logo"
@@ -216,6 +219,7 @@
                 </label>
               </div>
             </div>
+            <p class="checked__text">PLEASE SELECT A PLAN</p>
             <div class="choice__box-2">
               <div class="checked__choice">
                 <input
@@ -225,7 +229,7 @@
                   id="plan1"
                 />
                 <label for="plan1">
-                  <div class="plan">
+                  <div class="plan" data-plan="Arcade(Yearly)">
                     <img
                       src="assets/images/icon-arcade.svg"
                       alt="arcade logo"
@@ -248,7 +252,7 @@
                   id="plan2"
                 />
                 <label for="plan2">
-                  <div class="plan">
+                  <div class="plan" data-plan="Advanced(Yearly)">
                     <img
                       src="assets/images/icon-advanced.svg"
                       alt="advanced logo"
@@ -270,7 +274,7 @@
                   id="plan3"
                 />
                 <label for="plan3">
-                  <div class="plan">
+                  <div class="plan" data-plan="Pro(Yearly)">
                     <img
                       src="assets/images/icon-pro.svg"
                       alt="pro logo"
@@ -296,8 +300,8 @@
             </div>
 
             <div class="btn__box">
-              <button class="back__btn">Go Back</button>
-              <button class="next__btn">Next Step</button>
+              <button id="back__btn-2">Go Back</button>
+              <button id="next__btn-2">Next Step</button>
             </div>
           </div>
           <!-- <div class="form-2">
@@ -393,29 +397,47 @@
               </div>
             </div>
             <div class="pick__boxes boxes-year">
-              <div class="pick">
-                <input type="checkbox" class="add-on__check" />
-                <div class="add-on__box">
-                  <h4 class="add-on__heading">Online service</h4>
-                  <p class="add-on__text">Access to multiplayer games</p>
-                </div>
-                <span class="add-on__price">+$20/yr</span>
+              <div class="pick__box">
+                <label class="pick" for="pick__check4">
+                  <input
+                    type="checkbox"
+                    class="add-on__check"
+                    id="pick__check4"
+                  />
+                  <div class="add-on__box">
+                    <h4 class="add-on__heading">Online service</h4>
+                    <p class="add-on__text">Access to multiplayer games</p>
+                  </div>
+                  <span class="add-on__price">+$20/yr</span>
+                </label>
               </div>
-              <div class="pick">
-                <input type="checkbox" class="add-on__check" />
-                <div class="add-on__box">
-                  <h4 class="add-on__heading">Larger storage</h4>
-                  <p class="add-on__text">Extra 1TB of cloud save</p>
-                </div>
-                <span class="add-on__price">+$20/yr</span>
+              <div class="pick__box">
+                <label class="pick" for="pick__check5">
+                  <input
+                    type="checkbox"
+                    class="add-on__check"
+                    id="pick__check5"
+                  />
+                  <div class="add-on__box">
+                    <h4 class="add-on__heading">Larger storage</h4>
+                    <p class="add-on__text">Extra 1TB of cloud save</p>
+                  </div>
+                  <span class="add-on__price">+$20/yr</span>
+                </label>
               </div>
-              <div class="pick">
-                <input type="checkbox" class="add-on__check" />
-                <div class="add-on__box">
-                  <h4 class="add-on__heading">Customizable Profile</h4>
-                  <p class="add-on__text">Custom theme on your profile</p>
-                </div>
-                <span class="add-on__price">+$20/yr</span>
+              <div class="pick__box">
+                <label class="pick" for="pick__check6">
+                  <input
+                    type="checkbox"
+                    class="add-on__check"
+                    id="pick__check6"
+                  />
+                  <div class="add-on__box">
+                    <h4 class="add-on__heading">Customizable Profile</h4>
+                    <p class="add-on__text">Custom theme on your profile</p>
+                  </div>
+                  <span class="add-on__price">+$20/yr</span>
+                </label>
               </div>
             </div>
             <!-- <div class="choice__box-1">
@@ -502,8 +524,8 @@
             </div> -->
 
             <div class="btn__box">
-              <button class="back__btn">Go Back</button>
-              <button class="next__btn">Next Step</button>
+              <button id="back__btn-3">Go Back</button>
+              <button id="next__btn-3">Next Step</button>
             </div>
           </div>
           <!-- <div class="form-2">
@@ -550,65 +572,55 @@
                 Double-check everything looks OK before confirming.
               </p>
             </div>
-            <div class="selected__box">
-              <h4 class="chosen__plan">Arcade(Monthly)</h4>
-            </div>
-            <!-- <div class="pick__boxes boxes-month">
-              <div class="pick">
-                <input type="checkbox" class="add-on__check" />
-                <div class="add-on__box">
-                  <h4 class="add-on__heading">Online service</h4>
-                  <p class="add-on__text">Access to multiplayer games</p>
+
+            <div class="selected__box-month">
+              <div class="selected__month">
+                <div class="chosen__box">
+                  <h4 class="chosen__plan">Arcade(Monthly)</h4>
+                  <p class="chosen__price">$1/mo</p>
                 </div>
-                <span class="add-on__price">+$1/mo</span>
+                <div class="chosen__add-ons__box">
+                  <div class="chosen__add-ons">
+                    <p class="chosen__add-ons__text">Online service</p>
+                    <p class="chosen__add-ons__price">+$1/mo</p>
+                  </div>
+                  <div class="chosen__add-ons">
+                    <p class="chosen__add-ons__text">Online service</p>
+                    <p class="chosen__add-ons__price">+$1/mo</p>
+                  </div>
+                </div>
               </div>
-              <div class="pick">
-                <input type="checkbox" class="add-on__check" />
-                <div class="add-on__box">
-                  <h4 class="add-on__heading">Larger storage</h4>
-                  <p class="add-on__text">Extra 1TB of cloud save</p>
-                </div>
-                <span class="add-on__price">+$2/mo</span>
-              </div>
-              <div class="pick">
-                <input type="checkbox" class="add-on__check" />
-                <div class="add-on__box">
-                  <h4 class="add-on__heading">Customizable Profile</h4>
-                  <p class="add-on__text">Custom theme on your profile</p>
-                </div>
-                <span class="add-on__price">+$2/mo</span>
+              <div class="chosen__total">
+                <p class="chosen__total__text">Total(per month)</p>
+                <p class="chosen__total__price">+$10/mo</p>
               </div>
             </div>
-            <div class="pick__boxes boxes-year">
-              <div class="pick">
-                <input type="checkbox" class="add-on__check" />
-                <div class="add-on__box">
-                  <h4 class="add-on__heading">Online service</h4>
-                  <p class="add-on__text">Access to multiplayer games</p>
+            <div class="selected__box-year">
+              <div class="selected__box selected__year">
+                <div class="chosen__box">
+                  <h4 class="chosen__plan">Arcade(Yearly)</h4>
+                  <p class="chosen__price">$1/yr</p>
                 </div>
-                <span class="add-on__price">+$20/yr</span>
-              </div>
-              <div class="pick">
-                <input type="checkbox" class="add-on__check" />
-                <div class="add-on__box">
-                  <h4 class="add-on__heading">Larger storage</h4>
-                  <p class="add-on__text">Extra 1TB of cloud save</p>
+                <div class="chosen__add-ons__box">
+                  <div class="chosen__add-ons">
+                    <p class="chosen__add-ons__text">Online service</p>
+                    <p class="chosen__add-ons__price">+$1/yr</p>
+                  </div>
+                  <div class="chosen__add-ons">
+                    <p class="chosen__add-ons__text">Online service</p>
+                    <p class="chosen__add-ons__price">+$1/yr</p>
+                  </div>
                 </div>
-                <span class="add-on__price">+$20/yr</span>
               </div>
-              <div class="pick">
-                <input type="checkbox" class="add-on__check" />
-                <div class="add-on__box">
-                  <h4 class="add-on__heading">Customizable Profile</h4>
-                  <p class="add-on__text">Custom theme on your profile</p>
-                </div>
-                <span class="add-on__price">+$20/yr</span>
+              <div class="chosen__total">
+                <p class="chosen__total__text">Total(per year)</p>
+                <p class="chosen__total__price">+$10/yr</p>
               </div>
-            </div> -->
+            </div>
 
             <div class="btn__box">
-              <button class="back__btn">Go Back</button>
-              <button class="next__btn">Next Step</button>
+              <button id="back__btn-4">Go Back</button>
+              <button id="next__btn-4">Confirm</button>
             </div>
           </div>
           <!-- <div class="form-2">
