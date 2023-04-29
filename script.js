@@ -29,6 +29,7 @@ const yearSelected = document.querySelector(".selected__box-year");
 const addOnHeadings = document.querySelectorAll(".add-on__heading");
 const addOnPrices = document.querySelectorAll(".add-on__price");
 const chosenPlan = document.querySelector(".chosen__plan");
+const chosenPrice = document.querySelector(".chosen__price");
 const nextBtn = document.querySelectorAll(".next__btn");
 const backBtn = document.querySelectorAll(".back__btn");
 const nextBtn2 = document.getElementById("next__btn-2");
@@ -188,7 +189,10 @@ plans.forEach((plan) => {
   plan.addEventListener("click", function () {
     plans.forEach((otherPlan) => otherPlan.classList.remove("active__plan"));
     plan.classList.add("active__plan");
-
+    const price = plan
+      .querySelector(".choice__text-box")
+      .querySelector(".choice__text").textContent;
+    chosenPrice.textContent = price;
     chosenPlan.textContent = plan.dataset.plan;
     // chosenPlan.forEach((plan) => (plan.textContent = plan.dataset.plan));
 
