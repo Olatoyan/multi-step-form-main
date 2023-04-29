@@ -28,8 +28,10 @@ const monthSelected = document.querySelector(".selected__box-month");
 const yearSelected = document.querySelector(".selected__box-year");
 const addOnHeadings = document.querySelectorAll(".add-on__heading");
 const addOnPrices = document.querySelectorAll(".add-on__price");
-const chosenPlan = document.querySelector(".chosen__plan");
-const chosenPrice = document.querySelector(".chosen__price");
+const chosenPlan = document.querySelectorAll(".chosen__plan");
+const chosenPrice = document.querySelectorAll(".chosen__price");
+const chosenAddOnsText = document.querySelectorAll(".chosen__add-ons__text");
+const chosenAddOnsPrice = document.querySelectorAll(".chosen__add-ons__price");
 const nextBtn = document.querySelectorAll(".next__btn");
 const backBtn = document.querySelectorAll(".back__btn");
 const nextBtn2 = document.getElementById("next__btn-2");
@@ -192,13 +194,116 @@ plans.forEach((plan) => {
     const price = plan
       .querySelector(".choice__text-box")
       .querySelector(".choice__text").textContent;
-    chosenPrice.textContent = price;
+    chosenPrice.forEach((prices) => (prices.textContent = price));
+
     chosenPlan.textContent = plan.dataset.plan;
-    // chosenPlan.forEach((plan) => (plan.textContent = plan.dataset.plan));
+    chosenPlan.forEach((plank) => (plank.textContent = plan.dataset.plan));
 
     console.log(plan.dataset.plan);
   });
 });
+const checkedAddonTextsBox = [];
+const checkedAddonPriceBox = [];
+
+pickBox.forEach((picks) => {
+  const checkbox = picks.querySelector('input[type="checkbox"]');
+  let listenerAdded = false;
+
+  checkbox.addEventListener("click", function (e) {
+    e.stopPropagation();
+
+    const checkedAddonTexts = picks
+      .querySelector(".pick")
+      .querySelector(".add-on__box")
+      .querySelector(".add-on__heading").textContent;
+    const checkedAddonPrice = picks
+      .querySelector(".pick")
+      .querySelector(".add-on__price").textContent;
+    // console.log(checkedAddonPrice);
+
+    // console.log(checkbox.checked);
+
+    if (checkbox.checked && !listenerAdded) {
+      checkedAddonTextsBox.push(checkedAddonTexts);
+      checkedAddonPriceBox.push(checkedAddonPrice);
+      // console.log(xxx);
+      // console.log(checkedAddonTexts);
+      listenerAdded = true;
+    } else if (!checkbox.checked && listenerAdded) {
+      const index = checkedAddonTextsBox.indexOf(checkedAddonTexts);
+      const priceIndex = checkedAddonPriceBox.indexOf(checkedAddonPrice);
+      // checkedAddonPriceBox.push(checkedAddonPrice);
+
+      if (index > -1) {
+        checkedAddonTextsBox.splice(index, 1);
+        checkedAddonPriceBox.splice(priceIndex, 1);
+
+        // console.log(xxx);
+        // console.log(checkedAddonTexts);
+        listenerAdded = false;
+      }
+    }
+    // console.log(checkedAddonTextsBox);
+    // console.log(checkedAddonPriceBox);
+
+    //   box.forEach((mov, i) => {
+    //     const html = `
+    //     <div class="chosen__add-ons__box">
+    //     <div class="chosen__add-ons">
+    //   <p class="chosen__add-ons__text">${mov[i]}</p>
+    //   <p class="chosen__add-ons__price">+$1/yr</p>
+    // </div>
+    // <div class="chosen__add-ons">
+    // <p class="chosen__add-ons__text">Online service</p>
+    //   <p class="chosen__add-ons__price">+$1/yr</p>
+    //   </div>
+    //   </div>
+    //   `;
+    //     console.log(html);
+    //   });
+    function flop(box) {
+      let html = "";
+      box.forEach((item) => {
+        html += `
+          <div class="chosen__add-ons">
+            <p class="chosen__add-ons__text">${item}</p>
+            <p class="chosen__add-ons__price">+$1/yr</p>
+          </div>
+      `;
+      });
+      const mip = document.querySelector(".chosen__add-ons__box");
+      mip.insertAdjacentHTML("beforeend", html);
+      console.log(html);
+
+      // yearSelected.innerHTML = html;
+    }
+    const wew = checkedAddonTextsBox;
+    flop(wew);
+  });
+});
+
+// console.log(xxx);
+// console.log(
+//   picks.querySelector(".pick").querySelector(".add-on__price").textContent
+// );
+// const op = chosenAddOnsText.forEach((bl) => (bl.textContent = yyy));
+
+// const html = `
+//   <div class="chosen__add-ons__box">
+//     <div class="chosen__add-ons">
+//       <p class="chosen__add-ons__text">${op}</p>
+//       <p class="chosen__add-ons__price">+$1/yr</p>
+//     </div>
+//     <div class="chosen__add-ons">
+//       <p class="chosen__add-ons__text">Online service</p>
+//       <p class="chosen__add-ons__price">+$1/yr</p>
+//     </div>
+//   </div>
+// `;
+
+// console.log(html);
+//   })
+// );
 
 // picks.forEach((pick) => {
 //   pick.addEventListener("click", function (e) {
