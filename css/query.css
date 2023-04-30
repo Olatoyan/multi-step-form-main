@@ -1,0 +1,48 @@
+@media only screen and (max-width: 56.25em) {
+  .container-1,
+  .container-2,
+  .container-3,
+  .container-4,
+  .container-5 {
+    /* display: flex; */
+    grid-template-columns: 1fr;
+    grid-template-rows: 20rem 1fr;
+    background-color: #bfe2fd;
+    padding: 0;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    height: 20rem;
+    background-image: url(../assets/images/bg-sidebar-mobile.svg);
+    background-size: cover;
+    /* 
+    background-origin: end;
+    background-position: end; */
+  }
+  .step__box {
+    display: none;
+  }
+
+  .form-1 {
+    background-color: #fff;
+    /* margin-top: -4rem; */
+  }
+
+  .choice__box-1,
+  .choice__box-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* grid-template-row: repeat(3, 1fr); */
+    gap: 2rem;
+  }
+  .choice__box-2 {
+    display: none;
+  }
+  .plan {
+    flex-direction: row;
+    align-items: center;
+  }
+}

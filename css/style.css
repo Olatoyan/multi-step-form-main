@@ -28,8 +28,6 @@ body {
   display: grid;
   place-items: center;
   margin-top: 4rem;
-  /* max-width: 100rem;
-  margin: 0 auto; */
   background-color: #bfe2fd;
 }
 
@@ -39,7 +37,6 @@ STEP 1
 
 .sidebar {
   background-image: url(../assets/images/bg-sidebar-desktop.svg);
-  /* height: 70vh; */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -88,8 +85,6 @@ FORM
 **************** */
 .form {
   max-width: 60rem;
-  /* padding: 2rem; */
-  /* background-color: chocolate; */
 }
 .form-1 {
   display: flex;
@@ -156,8 +151,6 @@ STEP 2
 
 .choice__box-1,
 .choice__box-2 {
-  /* display: flex;
-  gap: 2rem; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
@@ -192,7 +185,6 @@ STEP 2
   height: 4rem;
 }
 .plan__radio {
-  /* opacity: 0; */
   display: none;
 }
 .choice__text-box {
@@ -201,12 +193,12 @@ STEP 2
   gap: 0.5rem;
 }
 .choice__heading {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #02295a;
 }
 .choice__text {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #9699ab;
 }
 
@@ -224,6 +216,10 @@ STEP 2
   gap: 1.3rem;
 }
 
+.confirm__box span {
+  font-size: 1.3rem;
+}
+
 .check__box {
   display: flex;
   align-items: center;
@@ -237,8 +233,7 @@ STEP 2
   text-align: center;
   color: #d61b1b;
 }
-.select__plan {
-}
+
 .check {
   display: block;
   background-color: #02295a;
@@ -289,8 +284,7 @@ STEP 2
 .boxes-year {
   display: none;
 }
-.boxes-year {
-}
+
 .pick {
   display: flex;
   align-items: center;
@@ -351,8 +345,6 @@ STEP 2
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
-  /* background-color: #f0f6ff; */
-  /* border: 1px solid #02295a; */
 }
 
 .chosen__box {
@@ -372,14 +364,12 @@ STEP 2
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  /* background-color: #f0f6ff; */
 }
 .chosen__add-ons {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
-  /* background-color: #f0f6ff; */
 }
 
 .chosen__add-ons__text {
@@ -390,9 +380,6 @@ STEP 2
   font-size: 1.2rem;
   color: #02295a;
   font-weight: 500;
-}
-
-.chosen__total {
 }
 
 .chosen__total__text {
