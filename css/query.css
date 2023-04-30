@@ -1,4 +1,8 @@
 @media only screen and (max-width: 56.25em) {
+  body {
+    margin: 0;
+  }
+
   .container-1,
   .container-2,
   .container-3,
