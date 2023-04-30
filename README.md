@@ -45,8 +45,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://toyan-multistep-form.netlify.app](https://toyan-multistep-form.netlify.app)
+- Live Site URL: [https://github.com/Olatoyan/multi-step-form-main](https://github.com/Olatoyan/multi-step-form-main)
 
 ## My process
 
@@ -69,6 +69,6 @@ I want to work on more challenges like this to strengthen my skills
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/Olatoyan)
+- Website - [Multi step form](https://toyan-multistep-form.netlify.app)
+- Frontend Mentor - [@Olatoyan](https://www.frontendmentor.io/profile/Olatoyan)
 - Twitter - [@Toyan](https://www.twitter.com/_Annonnymouss_)
