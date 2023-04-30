@@ -1,10 +1,12 @@
 .container-1,
 .container-2,
 .container-3,
-.container-4 {
+.container-4,
+.container-5 {
   display: grid;
   grid-template-columns: 30rem 1fr;
   align-items: center;
+  max-width: 90rem;
   /* gap: 3rem; */
   padding: 1.4rem;
   background-color: #fff;
@@ -12,6 +14,7 @@
 
 .container-3,
 .container-2,
+.container-5,
 .container-4 {
   display: none;
 }

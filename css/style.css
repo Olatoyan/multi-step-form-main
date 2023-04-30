@@ -93,6 +93,7 @@ FORM
 }
 .form-1 {
   display: flex;
+
   flex-direction: column;
   gap: 3rem;
   padding: 2rem 7rem;
@@ -404,6 +405,19 @@ STEP 2
   font-size: 1.7rem;
   color: #473dff;
   font-weight: 700;
+}
+
+.container-5__box {
+  align-items: center;
+}
+.thanks {
+  font-size: 3rem;
+  color: #02295a;
+}
+.thanks__text {
+  font-size: 1.5rem;
+  color: #9699ab;
+  text-align: center;
 }
 
 /* .attribution {

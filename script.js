@@ -16,7 +16,6 @@ const monthlyPlan = document.querySelector(".choice__box-1");
 const yearlyPlan = document.querySelector(".choice__box-2");
 const plans = document.querySelectorAll(".plan");
 const radios = document.getElementsByName("plan");
-// const plant = document.querySelectorAll('input[name="plan"]');
 const checkPlan = document.querySelector(".check");
 const monthly = document.querySelector(".monthly");
 const yearly = document.querySelector(".yearly");
@@ -32,6 +31,7 @@ const chosenPlan = document.querySelectorAll(".chosen__plan");
 const chosenPrice = document.querySelectorAll(".chosen__price");
 const chosenAddOnsText = document.querySelectorAll(".chosen__add-ons__text");
 const chosenAddOnsPrice = document.querySelectorAll(".chosen__add-ons__price");
+const chosenTotal = document.querySelectorAll(".chosen__total__price");
 const nextBtn = document.querySelectorAll(".next__btn");
 const backBtn = document.querySelectorAll(".back__btn");
 const nextBtn2 = document.getElementById("next__btn-2");
@@ -42,7 +42,7 @@ const nextBtn4 = document.getElementById("next__btn-4");
 const backBtn4 = document.getElementById("back__btn-4");
 
 let currentPage = 1;
-const MAX_PAGE = 4;
+const MAX_PAGE = 5;
 
 ///////////////////////////////////////////////
 // PAGE 1
@@ -62,6 +62,8 @@ const validateForm = function (e) {
     nameLengthError.style.display = "block";
     return false;
   } else {
+    nameLengthError.style.display = "none";
+
     nameInput.style.border = "1px solid #022a5a46";
     nameError.style.display = "none";
   }
@@ -191,127 +193,91 @@ plans.forEach((plan) => {
   plan.addEventListener("click", function () {
     plans.forEach((otherPlan) => otherPlan.classList.remove("active__plan"));
     plan.classList.add("active__plan");
-    const price = plan
-      .querySelector(".choice__text-box")
-      .querySelector(".choice__text").textContent;
-    chosenPrice.forEach((prices) => (prices.textContent = price));
-
-    chosenPlan.textContent = plan.dataset.plan;
+    const price = parseFloat(
+      plan
+        .querySelector(".choice__text-box")
+        .querySelector(".choice__text")
+        .textContent.replace("$", "")
+    );
+    chosenPrice.forEach(
+      (prices) => (prices.textContent = "$" + price.toFixed(2))
+    );
     chosenPlan.forEach((plank) => (plank.textContent = plan.dataset.plan));
 
-    console.log(plan.dataset.plan);
-  });
-});
-const checkedAddonTextsBox = [];
-const checkedAddonPriceBox = [];
+    let totalAddOnsPrice = 0;
+    const checkedAddonTextsBox = [];
+    const checkedAddonPriceBox = [];
+    pickBox.forEach((picks) => {
+      const checkbox = picks.querySelector('input[type="checkbox"]');
+      let listenerAdded = false;
 
-pickBox.forEach((picks) => {
-  const checkbox = picks.querySelector('input[type="checkbox"]');
-  let listenerAdded = false;
+      checkbox.addEventListener("click", function (e) {
+        e.stopPropagation();
 
-  checkbox.addEventListener("click", function (e) {
-    e.stopPropagation();
+        const checkedAddonTexts = picks
+          .querySelector(".pick")
+          .querySelector(".add-on__box")
+          .querySelector(".add-on__heading").textContent;
+        const checkedAddonPrice = parseFloat(
+          picks
+            .querySelector(".pick")
+            .querySelector(".add-on__price")
+            .textContent.replace("$", "")
+        );
 
-    const checkedAddonTexts = picks
-      .querySelector(".pick")
-      .querySelector(".add-on__box")
-      .querySelector(".add-on__heading").textContent;
-    const checkedAddonPrice = picks
-      .querySelector(".pick")
-      .querySelector(".add-on__price").textContent;
-    // console.log(checkedAddonPrice);
+        if (checkbox.checked && !listenerAdded) {
+          checkedAddonTextsBox.push(checkedAddonTexts);
+          checkedAddonPriceBox.push(checkedAddonPrice);
+          listenerAdded = true;
+        } else if (!checkbox.checked && listenerAdded) {
+          const index = checkedAddonTextsBox.indexOf(checkedAddonTexts);
+          const priceIndex = checkedAddonPriceBox.indexOf(checkedAddonPrice);
 
-    // console.log(checkbox.checked);
+          if (index > -1) {
+            checkedAddonTextsBox.splice(index, 1);
+            checkedAddonPriceBox.splice(priceIndex, 1);
 
-    if (checkbox.checked && !listenerAdded) {
-      checkedAddonTextsBox.push(checkedAddonTexts);
-      checkedAddonPriceBox.push(checkedAddonPrice);
-      // console.log(xxx);
-      // console.log(checkedAddonTexts);
-      listenerAdded = true;
-    } else if (!checkbox.checked && listenerAdded) {
-      const index = checkedAddonTextsBox.indexOf(checkedAddonTexts);
-      const priceIndex = checkedAddonPriceBox.indexOf(checkedAddonPrice);
-      // checkedAddonPriceBox.push(checkedAddonPrice);
+            listenerAdded = false;
+          }
+        }
 
-      if (index > -1) {
-        checkedAddonTextsBox.splice(index, 1);
-        checkedAddonPriceBox.splice(priceIndex, 1);
+        totalAddOnsPrice = checkedAddonPriceBox.reduce(
+          (total, price) => total + price,
+          0
+        );
+        chosenTotal.forEach(
+          (total) =>
+            (total.textContent = "$" + (price + totalAddOnsPrice).toFixed(2))
+        );
 
-        // console.log(xxx);
-        // console.log(checkedAddonTexts);
-        listenerAdded = false;
-      }
-    }
-    // console.log(checkedAddonTextsBox);
-    // console.log(checkedAddonPriceBox);
+        function flop(texts, prices) {
+          const mip = document.querySelectorAll(".chosen__add-ons__box");
+          mip.forEach((mi) => {
+            mi.innerHTML = "";
+            texts.forEach((item, index) => {
+              if (item && prices[index]) {
+                mi.insertAdjacentHTML(
+                  "beforeend",
+                  `
+                  <div class="chosen__add-ons">
+                    <p class="chosen__add-ons__text">${item}</p>
+                    <p class="chosen__add-ons__price">$${prices[index].toFixed(
+                      2
+                    )}</p>
+                  </div>
+                  `
+                );
+              }
+            });
+          });
+        }
 
-    //   box.forEach((mov, i) => {
-    //     const html = `
-    //     <div class="chosen__add-ons__box">
-    //     <div class="chosen__add-ons">
-    //   <p class="chosen__add-ons__text">${mov[i]}</p>
-    //   <p class="chosen__add-ons__price">+$1/yr</p>
-    // </div>
-    // <div class="chosen__add-ons">
-    // <p class="chosen__add-ons__text">Online service</p>
-    //   <p class="chosen__add-ons__price">+$1/yr</p>
-    //   </div>
-    //   </div>
-    //   `;
-    //     console.log(html);
-    //   });
-    function flop(box) {
-      let html = "";
-      box.forEach((item) => {
-        html += `
-          <div class="chosen__add-ons">
-            <p class="chosen__add-ons__text">${item}</p>
-            <p class="chosen__add-ons__price">+$1/yr</p>
-          </div>
-      `;
+        const wew = [...new Set(checkedAddonTextsBox)];
+        flop(wew, checkedAddonPriceBox);
       });
-      const mip = document.querySelector(".chosen__add-ons__box");
-      mip.insertAdjacentHTML("beforeend", html);
-      console.log(html);
-
-      // yearSelected.innerHTML = html;
-    }
-    const wew = checkedAddonTextsBox;
-    flop(wew);
+    });
   });
 });
-
-// console.log(xxx);
-// console.log(
-//   picks.querySelector(".pick").querySelector(".add-on__price").textContent
-// );
-// const op = chosenAddOnsText.forEach((bl) => (bl.textContent = yyy));
-
-// const html = `
-//   <div class="chosen__add-ons__box">
-//     <div class="chosen__add-ons">
-//       <p class="chosen__add-ons__text">${op}</p>
-//       <p class="chosen__add-ons__price">+$1/yr</p>
-//     </div>
-//     <div class="chosen__add-ons">
-//       <p class="chosen__add-ons__text">Online service</p>
-//       <p class="chosen__add-ons__price">+$1/yr</p>
-//     </div>
-//   </div>
-// `;
-
-// console.log(html);
-//   })
-// );
-
-// picks.forEach((pick) => {
-//   pick.addEventListener("click", function (e) {
-//     // e.preventDefault();
-
-//     pick.classList.toggle("active__pick");
-//   });
-// });
 
 /////////////////////////////////////////////////////
 
@@ -356,7 +322,7 @@ backBtn3.addEventListener("click", function (e) {
 });
 
 // PAGE 4 BUTTONS
-nextBtn4.addEventListener("click", validateForm3);
+nextBtn4.addEventListener("click", validateForm4);
 backBtn4.addEventListener("click", function (e) {
   e.preventDefault();
   if (currentPage > 1) {
