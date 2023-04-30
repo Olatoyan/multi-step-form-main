@@ -189,8 +189,202 @@ checkPlan.addEventListener("click", function () {
 });
 let selectedPlan = null;
 
+// plans.forEach((plan) => {
+//   plan.addEventListener("click", function () {
+//     plans.forEach((otherPlan) => otherPlan.classList.remove("active__plan"));
+//     plan.classList.add("active__plan");
+//     const price = parseFloat(
+//       plan
+//         .querySelector(".choice__text-box")
+//         .querySelector(".choice__text")
+//         .textContent.replace("$", "")
+//     );
+//     chosenPrice.forEach(
+//       (prices) => (prices.textContent = "$" + price.toFixed(2))
+//     );
+//     chosenPlan.forEach((plank) => (plank.textContent = plan.dataset.plan));
+
+//     let totalAddOnsPrice = 0;
+//     const checkedAddonTextsBox = [];
+//     const checkedAddonPriceBox = [];
+//     pickBox.forEach((picks) => {
+//       const checkbox = picks.querySelector('input[type="checkbox"]');
+//       let listenerAdded = false;
+
+//       checkbox.addEventListener("click", function (e) {
+//         e.stopPropagation();
+
+//         const checkedAddonTexts = picks
+//           .querySelector(".pick")
+//           .querySelector(".add-on__box")
+//           .querySelector(".add-on__heading").textContent;
+//         const checkedAddonPrice = parseFloat(
+//           picks
+//             .querySelector(".pick")
+//             .querySelector(".add-on__price")
+//             .textContent.replace("$", "")
+//         );
+
+//         if (checkbox.checked && !listenerAdded) {
+//           checkedAddonTextsBox.push(checkedAddonTexts);
+//           checkedAddonPriceBox.push(checkedAddonPrice);
+//           listenerAdded = true;
+//         } else if (!checkbox.checked && listenerAdded) {
+//           const index = checkedAddonTextsBox.indexOf(checkedAddonTexts);
+//           const priceIndex = checkedAddonPriceBox.indexOf(checkedAddonPrice);
+
+//           if (index > -1) {
+//             checkedAddonTextsBox.splice(index, 1);
+//             checkedAddonPriceBox.splice(priceIndex, 1);
+
+//             listenerAdded = false;
+//           }
+//         }
+
+//         totalAddOnsPrice = checkedAddonPriceBox.reduce(
+//           (total, price) => total + price,
+//           0
+//         );
+//         chosenTotal.forEach(
+//           (total) =>
+//             (total.textContent = "$" + (price + totalAddOnsPrice).toFixed(2))
+//         );
+
+//         function flop(texts, prices) {
+//           const mip = document.querySelectorAll(".chosen__add-ons__box");
+//           mip.forEach((mi) => {
+//             mi.innerHTML = "";
+//             texts.forEach((item, index) => {
+//               if (item && prices[index]) {
+//                 mi.insertAdjacentHTML(
+//                   "beforeend",
+//                   `
+//                   <div class="chosen__add-ons">
+//                     <p class="chosen__add-ons__text">${item}</p>
+//                     <p class="chosen__add-ons__price">$${prices[index].toFixed(
+//                       2
+//                     )}</p>
+//                   </div>
+//                   `
+//                 );
+//               }
+//             });
+//           });
+//         }
+
+//         const wew = [...new Set(checkedAddonTextsBox)];
+//         flop(wew, checkedAddonPriceBox);
+//       });
+//     });
+//   });
+// });
+let dd;
+// plans.forEach((plan) => {
+//   plan.addEventListener("click", function () {
+//     plans.forEach((otherPlan) => otherPlan.classList.remove("active__plan"));
+//     plan.classList.add("active__plan");
+//     const price = parseFloat(
+//       plan
+//         .querySelector(".choice__text-box")
+//         .querySelector(".choice__text")
+//         .textContent.replace("$", "")
+//     );
+//     chosenPrice.forEach(
+//       (prices) => (prices.textContent = "$" + price.toFixed(2))
+//     );
+//     chosenPlan.forEach((plank) => (plank.textContent = plan.dataset.plan));
+
+//     let totalAddOnsPrice = 0;
+//     const checkedAddonTextsBox = [];
+//     const checkedAddonPriceBox = [];
+//     pickBox.forEach((picks) => {
+//       const checkbox = picks.querySelector('input[type="checkbox"]');
+//       let listenerAdded = false;
+
+//       checkbox.addEventListener("click", function (e) {
+//         e.stopPropagation();
+
+//         const checkedAddonTexts = picks
+//           .querySelector(".pick")
+//           .querySelector(".add-on__box")
+//           .querySelector(".add-on__heading").textContent;
+//         const checkedAddonPrice = parseFloat(
+//           picks
+//             .querySelector(".pick")
+//             .querySelector(".add-on__price")
+//             .textContent.replace("$", "")
+//         );
+
+//         if (checkbox.checked && !listenerAdded) {
+//           checkedAddonTextsBox.push(checkedAddonTexts);
+//           checkedAddonPriceBox.push(checkedAddonPrice);
+//           listenerAdded = true;
+//         } else if (!checkbox.checked && listenerAdded) {
+//           const index = checkedAddonTextsBox.indexOf(checkedAddonTexts);
+//           const priceIndex = checkedAddonPriceBox.indexOf(checkedAddonPrice);
+
+//           if (index > -1) {
+//             checkedAddonTextsBox.splice(index, 1);
+//             checkedAddonPriceBox.splice(priceIndex, 1);
+
+//             listenerAdded = false;
+//           }
+//         }
+
+//         totalAddOnsPrice = checkedAddonPriceBox.reduce(
+//           (total, price) => total + price,
+//           0
+//         );
+//         chosenTotal.forEach(
+//           (total) =>
+//             (total.textContent = "$" + (price + totalAddOnsPrice).toFixed(2))
+//         );
+
+//         function flop(texts, prices) {
+//           const mip = document.querySelectorAll(".chosen__add-ons__box");
+//           mip.forEach((mi) => {
+//             mi.innerHTML = "";
+//             texts.forEach((item, index) => {
+//               if (item && prices[index]) {
+//                 mi.insertAdjacentHTML(
+//                   "beforeend",
+//                   `
+//                   <div class="chosen__add-ons">
+//                     <p class="chosen__add-ons__text">${item}</p>
+//                     <p class="chosen__add-ons__price">$${prices[index].toFixed(
+//                       2
+//                     )}</p>
+//                   </div>
+//                   `
+//                 );
+//               }
+//             });
+//           });
+//         }
+
+//         const wew = [...new Set(checkedAddonTextsBox)];
+//         flop(wew, checkedAddonPriceBox);
+//       });
+//     });
+
+//     // Update total price to account for the initial state where no add-ons are selected
+//     chosenTotal.forEach(
+//       (total) =>
+//         (total.textContent = "$" + (price + totalAddOnsPrice).toFixed(2))
+//     );
+//   });
+// });
+let yy;
 plans.forEach((plan) => {
   plan.addEventListener("click", function () {
+    // Remove previously selected add-ons
+    const chosenAddOnsBox = document.querySelectorAll(".chosen__add-ons__box");
+    chosenAddOnsBox.forEach((box) => (box.innerHTML = ""));
+
+    // Clear the arrays for selected add-ons
+    let checkedAddonTextsBox = [];
+    let checkedAddonPriceBox = [];
+
     plans.forEach((otherPlan) => otherPlan.classList.remove("active__plan"));
     plan.classList.add("active__plan");
     const price = parseFloat(
@@ -205,13 +399,13 @@ plans.forEach((plan) => {
     chosenPlan.forEach((plank) => (plank.textContent = plan.dataset.plan));
 
     let totalAddOnsPrice = 0;
-    const checkedAddonTextsBox = [];
-    const checkedAddonPriceBox = [];
+    checkedAddonTextsBox = [];
+    checkedAddonPriceBox = [];
     pickBox.forEach((picks) => {
       const checkbox = picks.querySelector('input[type="checkbox"]');
       let listenerAdded = false;
 
-      checkbox.addEventListener("click", function (e) {
+      const checkboxClickHandler = function (e) {
         e.stopPropagation();
 
         const checkedAddonTexts = picks
@@ -232,6 +426,7 @@ plans.forEach((plan) => {
         } else if (!checkbox.checked && listenerAdded) {
           const index = checkedAddonTextsBox.indexOf(checkedAddonTexts);
           const priceIndex = checkedAddonPriceBox.indexOf(checkedAddonPrice);
+          listenerAdded = false; // add this line
 
           if (index > -1) {
             checkedAddonTextsBox.splice(index, 1);
@@ -274,8 +469,19 @@ plans.forEach((plan) => {
 
         const wew = [...new Set(checkedAddonTextsBox)];
         flop(wew, checkedAddonPriceBox);
-      });
+      };
+      // Remove any existing event listeners for this checkbox
+      checkbox.removeEventListener("click", checkboxClickHandler);
+
+      // const checkboxClickHandler = function(e) {}
+      checkbox.addEventListener("click", checkboxClickHandler);
     });
+
+    // Update total price to account for the initial state where no add-ons are selected
+    chosenTotal.forEach(
+      (total) =>
+        (total.textContent = "$" + (price + totalAddOnsPrice).toFixed(2))
+    );
   });
 });
 

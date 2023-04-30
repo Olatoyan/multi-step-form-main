@@ -84,10 +84,10 @@ STEP 1
 FORM
 **************** */
 .form {
-  max-width: 60rem;
 }
 .form-1 {
   display: flex;
+  width: 60rem;
 
   flex-direction: column;
   gap: 3rem;
