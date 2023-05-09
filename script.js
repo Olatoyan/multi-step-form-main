@@ -56,7 +56,7 @@ const validateForm = function (e) {
     nameInput.style.border = "1px solid #d61b1b";
     nameError.style.display = "block";
     return false;
-  } else if (name.length < 7) {
+  } else if (name.length < 5) {
     nameInput.style.border = "1px solid #d61b1b";
     nameError.style.display = "none";
     nameLengthError.style.display = "block";
@@ -189,9 +189,6 @@ checkPlan.addEventListener("click", function () {
 });
 let selectedPlan = null;
 
-let dd;
-
-let yy;
 plans.forEach((plan) => {
   plan.addEventListener("click", function () {
     // Remove previously selected add-ons
