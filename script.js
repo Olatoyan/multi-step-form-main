@@ -355,3 +355,5 @@ backBtn4.addEventListener("click", function (e) {
     return;
   }
 });
+
+let foo;
