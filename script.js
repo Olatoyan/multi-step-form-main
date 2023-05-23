@@ -1,6 +1,7 @@
 "use strict";
 
 const container1 = document.querySelector(".container-1");
+const formBox = document.querySelector(".form__box");
 const container2 = document.querySelector(".container-2");
 const form = document.querySelector(".form");
 const form1 = document.querySelector(".form-1");
@@ -46,6 +47,7 @@ const MAX_PAGE = 5;
 
 ///////////////////////////////////////////////
 // PAGE 1
+
 const validateForm = function (e) {
   e.preventDefault();
 
@@ -104,6 +106,52 @@ const validateForm = function (e) {
   }
 };
 
+formBox.addEventListener("input", function (e) {
+  if (e.target === nameInput) {
+    // name input
+    const name = nameInput.value.trim();
+    const regexName = /^[a-zA-z\s]*$/;
+    if (!regexName.test(name) || name === "") {
+      nameInput.style.border = "1px solid #d61b1b";
+      nameError.style.display = "block";
+      nameLengthError.style.display = "none";
+    } else if (name.length < 5) {
+      nameInput.style.border = "1px solid #d61b1b";
+      nameError.style.display = "none";
+      nameLengthError.style.display = "block";
+    } else {
+      nameInput.style.border = "1px solid #022a5a46";
+      nameError.style.display = "none";
+      nameLengthError.style.display = "none";
+    }
+  }
+  if (e.target === emailInput) {
+    // email input
+    const email = emailInput.value.trim();
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexEmail.test(email)) {
+      emailInput.style.border = "1px solid #d61b1b";
+      emailError.style.display = "block";
+    } else {
+      emailInput.style.border = "1px solid #022a5a46";
+      emailError.style.display = "none";
+    }
+  }
+
+  if (e.target === phoneInput) {
+    // phone number input
+    const phone = phoneInput.value.trim();
+    const regexNum = /^\d+$/;
+    if (!regexNum.test(phone)) {
+      phoneInput.style.border = "1px solid #d61b1b";
+      phoneError.style.display = "block";
+    } else {
+      phoneInput.style.border = "1px solid #022a5a46";
+      phoneError.style.display = "none";
+    }
+  }
+});
+
 /////////////////////////////////////////////////////////////////
 // PAGE 2
 const validateForm2 = function (e) {
@@ -130,6 +178,7 @@ const validateForm2 = function (e) {
         "grid";
     }
   }
+
   if (yearly.classList.contains("active-span")) {
     monthBoxes.style.display = "none";
     monthSelected.style.display = "none";
@@ -142,6 +191,18 @@ const validateForm2 = function (e) {
     yearSelected.style.display = "none";
   }
 };
+
+monthlyPlan.addEventListener("click", function (e) {
+  const selectedPlans = document.querySelector('input[name="plan"]:checked');
+  const planText = document.querySelector(".checked__text");
+
+  if (!selectedPlans) {
+    planText.style.display = "block";
+    return false;
+  } else {
+    planText.style.display = "none";
+  }
+});
 
 //////////////////////////////////////////////////////////
 // PAGE 3
@@ -179,14 +240,27 @@ const validateForm4 = function (e) {
 checkPlan.addEventListener("click", function () {
   monthly.classList.toggle("active-span");
   yearly.classList.toggle("active-span");
+
+  // Uncheck all radio buttons
+  const allPlanRadios = document.querySelectorAll('input[name="plan"]');
+  allPlanRadios.forEach((radio) => (radio.checked = false));
+  const activePlan = document.querySelector(".active__plan");
+
   if (yearly.classList.contains("active-span")) {
     monthlyPlan.style.display = "none";
     yearlyPlan.style.display = "grid";
+    if (activePlan) {
+      activePlan.classList.remove("active__plan");
+    }
   } else {
     monthlyPlan.style.display = "grid";
     yearlyPlan.style.display = "none";
+    if (activePlan) {
+      activePlan.classList.remove("active__plan");
+    }
   }
 });
+
 let selectedPlan = null;
 
 plans.forEach((plan) => {
@@ -198,9 +272,12 @@ plans.forEach((plan) => {
     // Clear the arrays for selected add-ons
     let checkedAddonTextsBox = [];
     let checkedAddonPriceBox = [];
+    const checkboxes = document.querySelectorAll(".add-on__check");
+    checkboxes.forEach((checkbox) => (checkbox.checked = false));
 
     plans.forEach((otherPlan) => otherPlan.classList.remove("active__plan"));
     plan.classList.add("active__plan");
+
     const price = parseFloat(
       plan
         .querySelector(".choice__text-box")
@@ -240,7 +317,7 @@ plans.forEach((plan) => {
         } else if (!checkbox.checked && listenerAdded) {
           const index = checkedAddonTextsBox.indexOf(checkedAddonTexts);
           const priceIndex = checkedAddonPriceBox.indexOf(checkedAddonPrice);
-          listenerAdded = false; // add this line
+          listenerAdded = false;
 
           if (index > -1) {
             checkedAddonTextsBox.splice(index, 1);
@@ -301,54 +378,27 @@ plans.forEach((plan) => {
 
 /////////////////////////////////////////////////////
 
+const navigateBack = function (e) {
+  e.preventDefault();
+  if (currentPage > 1) {
+    document.querySelector(`.container-${currentPage}`).style.display = "none";
+    currentPage--;
+    document.querySelector(`.container-${currentPage}`).style.display = "grid";
+    return;
+  }
+};
 // PAGE 1 BUTTONS
 nextBtn.forEach((btn) => btn.addEventListener("click", validateForm));
-backBtn.forEach((btn) =>
-  btn.addEventListener("click", function (e) {
-    e.preventDefault();
-    if (currentPage > 1) {
-      document.querySelector(`.container-${currentPage}`).style.display =
-        "none";
-      currentPage--;
-      document.querySelector(`.container-${currentPage}`).style.display =
-        "grid";
-      return;
-    }
-  })
-);
+backBtn.forEach((btn) => btn.addEventListener("click", navigateBack));
 
 // PAGE 2 BUTTONS
 nextBtn2.addEventListener("click", validateForm2);
-backBtn2.addEventListener("click", function (e) {
-  e.preventDefault();
-  if (currentPage > 1) {
-    document.querySelector(`.container-${currentPage}`).style.display = "none";
-    currentPage--;
-    document.querySelector(`.container-${currentPage}`).style.display = "grid";
-    return;
-  }
-});
+backBtn2.addEventListener("click", navigateBack);
 
 // PAGE 3 BUTTONS
 nextBtn3.addEventListener("click", validateForm3);
-backBtn3.addEventListener("click", function (e) {
-  e.preventDefault();
-  if (currentPage > 1) {
-    document.querySelector(`.container-${currentPage}`).style.display = "none";
-    currentPage--;
-    document.querySelector(`.container-${currentPage}`).style.display = "grid";
-    return;
-  }
-});
+backBtn3.addEventListener("click", navigateBack);
 
 // PAGE 4 BUTTONS
 nextBtn4.addEventListener("click", validateForm4);
-backBtn4.addEventListener("click", function (e) {
-  e.preventDefault();
-  if (currentPage > 1) {
-    document.querySelector(`.container-${currentPage}`).style.display = "none";
-    currentPage--;
-    document.querySelector(`.container-${currentPage}`).style.display = "grid";
-    return;
-  }
-});
+backBtn4.addEventListener("click", navigateBack);

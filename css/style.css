@@ -184,7 +184,8 @@ STEP 2
   width: 4rem;
   height: 4rem;
 }
-.plan__radio {
+.plan__radio,
+.monthly__plan__radio {
   display: none;
 }
 .choice__text-box {
